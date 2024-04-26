@@ -1,80 +1,92 @@
-.outer-div{
-    background-color: #fef6e9;
-    padding: 10px 200px;
-    margin: 0px 300px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-}
-  
-  h1 {
-    color: #333;
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-
-
-h2{
-    text-align: center;
-    padding-bottom: 50px;
+body {
+  font-family: "Satoshi", sans-serif;
 }
 
-h5{
-    font-size: 17px;
-    margin: 1px;
-    padding: 5px 0px;
-    text-align: left;
+.outer-div {
+  background-color: #fef6e9;
+  padding: 10px 200px;
+  margin: 0px 300px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-textarea{
-    width: 100%;
-    padding: 5px 5px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #ead8c2;
+h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 900;
 }
 
-.btn{
-    width: 60%;
-    background-color: black;
-    color: white;
-    padding: 14px 20px;
-    margin: 30px 80px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+h2 {
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 601;
 }
 
-.btn:hover{
-    background-color: gray;
+h5 {
+  font-weight: 501;
+  font-size: 17px;
+  margin: 1px;
+  padding: 5px 0px;
+  text-align: left;
 }
 
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0px;
-    background-color: #EAD8C2;
+.textarea-style {
+  color: black;
+  width: 100%;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ead8c2;
+  font-size: 13px;
+  font-weight: 400;
 }
 
-tr{
-    font-size: 20px;
-    color: black;
-    font-weight: bold;
-    text-align: left;
+.btn {
+  width: 60%;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  padding: 10px 20px;
+  margin: 30px 80px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-td{
-    padding: 25px 20px;
+.btn:hover {
+  background-color: rgb(33, 101, 10);
+  transition: 0.3s background-color ease;
 }
 
-p{
-    font-size: 15px;
-    margin: 0px;
-    padding-left: 68%;
-    padding-top: 12px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0px;
+  background-color: #ead8c2;
 }
 
+tr {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+}
 
+td {
+  padding: 25px 20px;
+}
+
+p {
+  font-size: 15px;
+  margin: 0px;
+  padding-left: 68%;
+  padding-top: 12px;
+}
+
+.form-text {
+  color: rgb(53, 32, 6);
+}

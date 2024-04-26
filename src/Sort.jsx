@@ -1,37 +1,39 @@
-import React from 'react'
-import './style.css'
-import { Link } from 'react-router-dom';
+import "./style.css";
+import { Link } from "react-router-dom";
 
 const Sort = (props) => {
-
-
-
   return (
     <>
-    <div className='outer-div'>
+      <div className="outer-div">
         <h1>CLOWIZ</h1>
-        <h2>Sort your Questions, Simple and Fast</h2>
+        <h2 className="form-text">Sort your Questions, Simple and Fast!</h2>
 
-        <h5>CLOS with description</h5>
-        <textarea cols="30" rows="3" placeholder='CLOS Name - Description'/>
+        <h5 className="form-text">CLOS with descriptions:</h5>
+        <textarea
+          className="textarea-style"
+          cols="30"
+          rows="3"
+          placeholder="CLOS Name - Description"
+        />
 
-        <h5>Questions!</h5>
-        <textarea cols="30" rows="3" placeholder='Question'/>
+        <h5 className="form-text">Questions:</h5>
+        <textarea
+          className="textarea-style"
+          cols="30"
+          rows="3"
+          placeholder="Question"
+        />
 
+        <br />
 
-        <br/>
-
-        <Link to="/Result"><button className='btn' onClick={props.handleClick}>SORT</button></Link>
-        
-        
-
-        
-
-      
-
-        </div>
+        <Link to="/Result">
+          <button className="btn" onClick={props.handleClick}>
+            SORT
+          </button>
+        </Link>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Sort
+export default Sort;
