@@ -49,9 +49,9 @@ h5 {
   width: 60%;
   background-color: black;
   color: white;
-  font-weight: bolder;
+  font-weight: 900;
   padding: 10px 20px;
-  margin: 30px 80px;
+  margin: 35px 80px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -67,24 +67,18 @@ table {
   border-collapse: collapse;
   margin: 0px;
   background-color: #ead8c2;
+  border-radius: 4px;
 }
 
 tr {
-  font-size: 20px;
+  font-size: 15px;
   color: black;
-  font-weight: bold;
+  font-weight: 400;
   text-align: left;
 }
 
 td {
   padding: 25px 20px;
-}
-
-p {
-  font-size: 15px;
-  margin: 0px;
-  padding-left: 68%;
-  padding-top: 12px;
 }
 
 .form-text {
