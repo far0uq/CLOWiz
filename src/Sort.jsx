@@ -7,7 +7,7 @@ const Sort = () => {
 
   const handleClick = async () => {
     // Send a POST request to the Flask backend
-    const response = await fetch('http://localhost:5173/predict', {
+    const response = await fetch('http://localhost:1800/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
