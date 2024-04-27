@@ -1,33 +1,19 @@
-import Sort from './Sort';
-import React from 'react'
-import Result from './Result';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
- 
- const App = () => {
+import Sort from "./Sort";
+import Result from "./Result";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
-
-   return (
+const App = () => {
+  return (
     <>
-
-
-
-<Router>
-
-          <Routes>
-            <Route path="/" element={<Sort />} />
-            <Route path="/Result" element={<Result />} />
-            <Route path="/Sort" element={<Sort />} />
-          </Routes>
-          
-        </Router>
-      
-      
-
+      <Router>
+        <Routes>
+          <Route path="/" element={<Sort />} />
+          <Route path="/Result" element={<Result />} />
+          <Route path="/Sort" element={<Sort />} />
+        </Routes>
+      </Router>
     </>
-   )
- }
+  );
+};
 
-
- 
- export default App
+export default App;
