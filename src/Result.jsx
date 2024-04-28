@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
-
 import { Link } from "react-router-dom";
 
-const Result = (props) => {
+const Result = () => {
+  const [clos, setClos] = useState([]);
+
+  useEffect(() => {
+    // Fetch the result from the Flask backend when the component mounts
+    const fetchResult = async () => {
+      const response = await fetch('/Result');
+      const data = await response.json();
+      setClos(data.clos);
+    };
+    fetchResult();
+  }, []);
+
   return (
     <>
       <div className="outer-div">
         <h1>Processed Successfully</h1>
         <br />
         <table>
-          <tr>
-            <td>CLO-1</td>
-          </tr>
-          <tr>
-            <td>CLO-2</td>
-          </tr>
-          <tr>
-            <td>CLO-3</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>CLO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clos.map((clo, index) => (
+              <tr key={index}>
+                <td>{clo}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
         <Link to="/Sort">
           <button className="btn">SORT AGAIN</button>
