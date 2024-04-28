@@ -49,23 +49,23 @@ tfidf_matrix = vectorizer.fit_transform(clos_df["Processed_Description"])
 # Define route for processing user input and returning result
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.get_json()
-    question = data["question"]
-
-    # Preprocess the user's input
-    processed_question = preprocess_text(question)
-
-    # Vectorize the processed question using the existing TF-IDF vectorizer
-    input_tfidf = vectorizer.transform([processed_question])
+    input_tfidf = vectorizer.transform(questions_df["Processed_Question"])
 
     # Calculate similarity between the input question and each CLO description
     similarity_scores = cosine_similarity(input_tfidf, tfidf_matrix)
 
     # Find the CLO with the highest similarity score
-    most_relevant_index = similarity_scores.argmax(axis=1)
-    most_relevant_clo = clos_df.loc[most_relevant_index, "CLO"].values[0]
+    questions_df["Most_Relevant_CLO"] = similarity_scores.argmax(axis=1)
+    questions_df["Most_Relevant_CLO"] = questions_df["Most_Relevant_CLO"].apply(
+        lambda x: clos_df["CLO"][x]
+    )
 
-    return jsonify({"clo": most_relevant_clo})
+    questions_dict = questions_df.set_index("Question")["Most_Relevant_CLO"].to_dict()
+
+    # Construct the complaint JSON response
+    response = {"questions": questions_dict}
+
+    return jsonify(response)
 
 
 # Define route for serving Sort.jsx

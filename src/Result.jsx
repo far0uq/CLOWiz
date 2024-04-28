@@ -3,16 +3,26 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 const Result = () => {
-  const [clos, setClos] = useState([]);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
-    // Fetch the result from the Flask backend when the component mounts
-    const fetchResult = async () => {
-      const response = await fetch('/Result');
-      const data = await response.json();
-      setClos(data.clos);
-    };
-    fetchResult();
+    // Retrieve the resultData from session storage
+    const resultData = sessionStorage.getItem("resultData");
+
+    // Check if resultData is available
+    if (resultData) {
+      // Parse the resultData JSON
+      const data = JSON.parse(resultData);
+      const resultArray = Object.entries(data.questions).map(
+        ([question, clo]) => ({ question, clo })
+      );
+      console.log("🚀 ~ useEffect ~ resultArray:", resultArray);
+
+      // Use the data as needed
+      setResult(resultArray);
+    } else {
+      console.error("resultData not found in session storage");
+    }
   }, []);
 
   return (
@@ -24,14 +34,17 @@ const Result = () => {
           <thead>
             <tr>
               <th>CLO</th>
+              <th>Questions</th>
             </tr>
           </thead>
           <tbody>
-            {clos.map((clo, index) => (
-              <tr key={index}>
-                <td>{clo}</td>
-              </tr>
-            ))}
+            {result &&
+              result.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.clo}</td>
+                  <td>{item.question}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <Link to="/Sort">
