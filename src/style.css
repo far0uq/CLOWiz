@@ -77,8 +77,9 @@ tr {
   text-align: left;
 }
 
-td {
-  padding: 25px 20px;
+thead th,
+tbody td {
+  padding: 10px;
 }
 
 .form-text {

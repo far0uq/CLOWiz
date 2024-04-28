@@ -6,18 +6,32 @@ const Sort = () => {
   const [question, setQuestion] = useState("");
 
   const handleClick = async () => {
-    // Send a POST request to the Flask backend
-    const response = await fetch('http://localhost:1800/predict', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ closDescription, question }),
-    });
+    try {
+      // Send a POST request to the Flask backend
+      const response = await fetch("http://localhost:1800/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ closDescription, question }),
+      });
 
-    // Redirect to the result page
-    if (response.ok) {
-      window.location.href = '/Result';
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`);
+      }
+
+      // Parse the response JSON
+      const data = await response.json();
+      console.log("Response from server:", data);
+      // Store the data in session storage
+      sessionStorage.setItem("resultData", JSON.stringify(data));
+
+      // Redirect to the result page
+      window.location.href = "/Result";
+    } catch (error) {
+      console.error("Error occurred:", error);
+      // Handle error, show a message to the user, etc.
     }
   };
 
