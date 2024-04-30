@@ -4,9 +4,39 @@ import { useState } from "react";
 const Sort = () => {
   const [closDescription, setClosDescription] = useState("");
   const [question, setQuestion] = useState("");
+  const [closError, setClosError] = useState("");
+  const [questionError, setQuestionError] = useState("");
+
+  const handleValidation = () => {
+    let isValid = true;
+    const closRegex = /CLO\d+: [A-Za-z0-9 ]+, [A-Za-z0-9 ,()]+/gm;
+    const questionRegex = /^[\w\d\s()]+[?]/gm;
+
+    if (!closRegex.test(closDescription)) {
+      setClosError(
+        "Please enter CLOS with descriptions in the format 'CLO_NO:NAME, CLO_DESC'"
+      );
+      isValid = false;
+    } else {
+      setClosError("");
+    }
+
+    if (!questionRegex.test(question)) {
+      setQuestionError("Please enter a valid question");
+      isValid = false;
+    } else {
+      setQuestionError("");
+    }
+
+    return isValid;
+  };
 
   const handleClick = async () => {
     try {
+      if (!handleValidation()) {
+        return;
+      }
+
       // Send a POST request to the Flask backend
       const response = await fetch("http://localhost:1800/predict", {
         method: "POST",
@@ -48,8 +78,9 @@ const Sort = () => {
           rows="3"
           value={closDescription}
           onChange={(e) => setClosDescription(e.target.value)}
-          placeholder="CLOS Name - Description"
+          placeholder="CLO_NO:NAME, CLO_DESC"
         />
+        <p className="error-text">{closError}</p>
 
         <h5 className="form-text">Questions:</h5>
         <textarea
@@ -58,8 +89,9 @@ const Sort = () => {
           rows="3"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Question"
+          placeholder="QUESTION(S)"
         />
+        <p className="error-text">{questionError}</p>
 
         <br />
 

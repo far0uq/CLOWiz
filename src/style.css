@@ -85,3 +85,7 @@ tbody td {
 .form-text {
   color: rgb(53, 32, 6);
 }
+
+.error-text {
+  color: red;
+}
